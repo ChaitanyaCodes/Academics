@@ -1,0 +1,22 @@
+void updateValue(int oldValue, int newValue){
+    int pos = 0;
+    struct node *current;
+
+    if(head == NULL){
+        printf("not created");
+        return;
+    }
+
+    current = head;
+    while(current != NULL){
+        if(current -> data == oldValue){
+            current -> data = newValue;
+            printf("updated");
+            return;
+        }
+
+        current = current -> next;
+        pos++;
+    }
+    printf("value does not exist");
+}
