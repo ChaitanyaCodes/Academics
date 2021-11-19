@@ -32,7 +32,7 @@ int main() {
 	printf("9. EXIT.\n");
 	
 	while (choice != 9) {
-		
+		printf("\nEnter your choice: ");
 		scanf("%d", &choice);
 
 		switch (choice) {
@@ -171,7 +171,7 @@ void deleteBegin(){
     }else{
         ptr = head;
         head = head -> next;
-        printf("The deleted node value is: %d", ptr -> data);
+        printf("The deleted node value is: %d\n", ptr -> data);
         free(ptr);
     }
 }
@@ -179,12 +179,12 @@ void deleteBegin(){
 void deleteEnd(){
     struct node *ptr, *temp;
     if(head == NULL){
-        printf("The link list is empty.");
+        printf("The link list is empty.\n");
         return;
     }else if(head -> next == NULL){
         ptr = head;
         head = NULL;
-        printf("The deleted element node is %d", ptr -> data);
+        printf("The deleted element node is %d\n", ptr -> data);
         free(ptr);
     }else{
         ptr = head;
@@ -193,7 +193,7 @@ void deleteEnd(){
             ptr = ptr -> next; 
         }
         temp -> next = NULL;
-        printf("The deleted element is %d", ptr -> data);
+        printf("The deleted element is %d\n", ptr -> data);
         free(ptr);
     }
 }
