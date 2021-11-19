@@ -23,6 +23,5 @@ int main(){
     
     linearSearch(arr, searchElement, 0, size);
     
-    
     return 0;
 }

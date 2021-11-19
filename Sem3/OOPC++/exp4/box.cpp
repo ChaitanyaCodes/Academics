@@ -22,7 +22,9 @@ int main() {
 	box rect;
 	box square(4, 4, 4);
 
+	cout << "Reactangle: " << endl;
 	rect.display();
+	cout << "Square: " << endl;
 	square.display();
 
 	_getch();

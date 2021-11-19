@@ -13,7 +13,7 @@ public:
     void set() {
         cout << "Length=" << l<< endl;
         cout << "Breadth=" << b << endl;
-        cout << "Height=" << h<< endl;
+        cout << "Height=" << h << endl;
     }
 
     void calvol() {

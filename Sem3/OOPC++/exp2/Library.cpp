@@ -2,9 +2,9 @@
 
 using namespace std;
 
-class book {
+class Book {
 	int accNumber, year, cost;
-	char publisherName[70], authorName[70], bookName[70];
+	char bookName[50], publisherName[30], authorName[30];
 
 public:
 	void set() {
@@ -31,10 +31,10 @@ public:
 		cout << "Cost of book : " << cost << endl;
 	}
 
-	friend void max(book, book, book);
+	friend void max(Book, Book, Book);
 };
 
-void max(book a, book b, book c) {
+void max(Book a, Book b, Book c) {
 	if (a.cost > b.cost)
 		if (a.cost > c.cost)
 			cout << a.bookName << " is the most expensive" << endl;
@@ -50,19 +50,19 @@ void max(book a, book b, book c) {
 
 int main() {
 
-	book b1, b2, b3;
+	Book book1, book2, book3;
 	cout << "Enter Details for Book 1" << endl;
-	b1.set();
+	book1.set();
 	cout << "Enter Details for Book 2" << endl;
-	b2.set();
+	book2.set();
 	cout << "Enter Details for Book 3" << endl;
-	b3.set();
+	book3.set();
 
-	b1.get();
-	b2.get();
-	b3.get();
+	book1.get();
+	book2.get();
+	book3.get();
 
-	max(b1, b2, b3);
+	max(book1, book2, book3);
 
 	return 0;
 }

@@ -1,5 +1,4 @@
 #include<iostream>
-#include<conio.h>
 #include<string>
 using namespace std;
 
@@ -48,9 +47,10 @@ int main() {
 	cin >> wheels;
 	vehicle obj2(name, wheels);
 	
+	cout << "OBJECT 1:"<< endl;
 	obj1.display();
+	cout << "OBJECT 2:"<< endl;
 	obj2.display();
 
-	_getch();
 	return 0;
 }
