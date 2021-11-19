@@ -19,7 +19,7 @@ int main() {
 		printf("4.DISPLAY\n");
 		printf("5.Exit\n");
 		while (choice != 5) {
-			printf("Enter your choice:");
+			printf("\nEnter your choice:");
 			scanf("%d", &choice);
 			switch (choice)
 			{
@@ -96,14 +96,14 @@ void peek() {
 		printf("STACK UNDERFLOW\n");
 	}
 	else {
-		printf("The top most element of the top is %d\n",STACK[top]);
+		printf("The top most element of the STACK is %d\n",STACK[top]);
 	}
 }
 
 void display() {
 	int i, element;
 	if (isEmpty()) {
-		printf("STACK OVERFLOW \n");
+		printf("STACK is empty. \n");
 	}
 	else {
 		printf("Stack Elements: ");
