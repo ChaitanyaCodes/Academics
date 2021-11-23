@@ -4,8 +4,9 @@ using namespace std;
 int main() {
 
 	int i1 = 0, i2 = 1, t, a;
-	cout << "Enter the fibonacci number of values to display:";
+	cout << "Enter the number of fibonacci numbers to be display:";
 	cin >> a;
+	
 	if (a == 1)
 		cout << i1;
 	else if (a == 2)
@@ -19,6 +20,6 @@ int main() {
 			i2 = t;
 		}
 	}
-    
+    cout << endl;
     return 0;
 }

@@ -19,7 +19,7 @@ int main(){
     if(exponent < 1){
         cout << "Please enter exponent greater or equal to 1";
     }else{
-        cout<<"Result: "<<power(base, exponent);
+        cout<<"Result: "<<power(base, exponent) << endl;
     }
     
     return 0;

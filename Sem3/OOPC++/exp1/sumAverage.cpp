@@ -3,23 +3,17 @@ using namespace std;
 
 int main ()
 {
-	int a;
-	int b;
-	int sum;
-	int average;
+	int a, b, sum;
+	float average;
 
-	cout << "please enter a\n";
+	cout << "Enter A value: ";
 	cin >> a;
-
-	cout << "Please enter b\n";
+	cout << "Enter B value: ";
 	cin >> b;
 
 	sum = a + b;
-	cout << "The sum is:" << sum;
-
-
+	cout << "The sum is:" << sum << endl;
 	average = sum / 2;
-	cout << "The avg is :" << average;
-	
+	cout << "The avgerage is :" << average << endl;
     return 0;
 }

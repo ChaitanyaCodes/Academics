@@ -10,7 +10,7 @@ public:
 	}
     
 	void display() {
-		cout << "Time is " << hr << ":" << min;
+		cout << "Time is " << hr << ":" << min << endl;
 	}
 	void addTime(Time t1, Time t2 ) {
 		min = t1.min + t2.min;

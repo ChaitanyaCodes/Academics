@@ -3,7 +3,7 @@ using namespace std;
 
 int main ()
 {
-	cout << "c++ is better than c";
-	
+	// prints c++ is better than c to the screen
+	cout << "c++ is better than c" << endl; 
 	return 0;
 }

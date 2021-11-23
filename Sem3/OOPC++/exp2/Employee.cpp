@@ -1,5 +1,4 @@
 #include<iostream>
-
 using namespace std;
 
 class employee {
@@ -7,21 +6,34 @@ public:
 	char firstName[20], lastName[20];
 	float monthlySalary, yearlySalary;
 
-	void set() {
+	void setFName() {
 		cout << "Enter First Name : ";
 		cin >> firstName;
+	}
+	
+	void setLName(){
 		cout << "Enter Last Name : ";
 		cin >> lastName;
+	}
+	
+	void setMSalary(){
 		cout << "Enter Monthly Salary : ";
 		cin >> monthlySalary;
+	}
+	
+	void set(){
+		setFName();
+		setLName();
+		setMSalary();
 	}
 
 	void calcYearlySalary() {
 		yearlySalary = monthlySalary * 12;
-		cout << "Yearly Salary Calculated" << endl;
+		cout << "Calculated yearly salary." << endl;
 	}
 
 	void display() {
+		cout << "----- Details -----" << endl;
 		cout << "First Name : " << firstName << endl;
 		cout << "Last Name : " << lastName << endl;
 		cout << "Monthly Salary : " << monthlySalary << endl;
@@ -30,13 +42,13 @@ public:
 };
 
 int main() {
-	employee e1, e2;
-	e1.set();
-	e1.calcYearlySalary();
-	e1.display();
+	employee emp1, emp2;
+	emp1.set();
+	emp1.calcYearlySalary();
+	emp1.display();
 	cout << endl;
-	e2.set();
-	e2.calcYearlySalary();
-	e2.display();
+	emp2.set();
+	emp2.calcYearlySalary();
+	emp2.display();
 	return 0;
 }

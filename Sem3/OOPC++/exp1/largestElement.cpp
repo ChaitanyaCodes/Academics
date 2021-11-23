@@ -2,17 +2,18 @@
 using namespace std;
 
 int main() {
-	int i, temp, max = 0;
+	int i, temp, largest = 0;
 	int a[50];
 
-	cout << "Enter the no. of elements of the array\n";
+	cout << "Enter the no. of elements of the array: ";
 	cin >> i;
 	for (int j = 0; j < i; j++) {
+		cout << "Enter element: ";
 		cin >> a[j];
-		if (max < a[j])
-			max = a[j];
+		if (largest < a[j])
+			largest = a[j];
 	}
-	cout << "\nMax:" << max;
+	cout << "\nLargest: " << largest << endl;
 	
     return 0;
 }

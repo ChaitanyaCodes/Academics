@@ -3,11 +3,11 @@ using namespace std;
 
 int linearSearch(int arr[], int searchElement, int index , int size){
     if(index == size){
-        cout << "element not found"<<endl;
+        cout << "element not found."<<endl;
         return 0 ;
     }
     if(searchElement == arr[index] ){
-        cout << "Element found at index: "<< index;
+        cout << "Element found at index: "<< index << endl;;
         return index;
     }
     return linearSearch(arr, searchElement, index +1, size);
@@ -15,7 +15,7 @@ int linearSearch(int arr[], int searchElement, int index , int size){
 
 int main(){
     int size = 5;
-    int arr[size] = { 1, 3, 5, 6, 9};
+    int arr[5] = { 1, 3, 5, 6, 9};
     int searchElement = 0;
     
     cout << "Enter the element to be searched: ";

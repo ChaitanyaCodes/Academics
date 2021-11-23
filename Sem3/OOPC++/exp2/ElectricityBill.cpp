@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-class bill {
+class Bill {
 public:
 	float customerNo, units, totalBill;
 	char customerName[20];
@@ -23,19 +23,26 @@ public:
 		else 
 			totalBill = 100 * 1.20 + 100 * 2 + (units - 200) * 3;
 
-		cout << "Total Bill : " << totalBill;
+		cout << "Total Bill : " << totalBill << endl;
 	}
 };
 
-void main() {
+int main() {
 
-	bill b1, b2, b3, b4;
-
+	Bill b1, b2, b3;
+	cout << "--- Customer 1 ---" << endl;
 	b1.set();
 	b1.calcBill();
 	cout << endl;
 
+	cout << "--- Customer 2 ---" << endl;
 	b2.set();
 	b2.calcBill();
-	return;
+	cout << endl;
+	
+	cout << "--- Customer 3 ---" << endl;
+	b3.set();
+	b3.calcBill();
+	cout << endl;
+	return 0;
 }

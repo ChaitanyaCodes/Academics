@@ -1,29 +1,31 @@
 #include<iostream>
-
+#include<string.h>
 using namespace std;
 
 class Book {
 	int accNumber, year, cost;
-	char bookName[50], publisherName[30], authorName[30];
+	string bookName, publisherName, authorName;
 
 public:
 	void set() {
+		
+		cout << "Enter name of the book: ";
+		getline(cin, bookName);
 		cout << "Enter name of the author:";
-		cin >> authorName;
+		getline(cin,authorName);
+		cout << "Enter publishers name:";
+		getline(cin, publisherName);
 		cout << "Enter the year of publication:";
 		cin >> year;
-		cout << "Enter name of the book:";
-		cin >> bookName;
-		cout << "Enter publishers name:";
-		cin >> publisherName;
 		cout << "Enter accession number:";
 		cin >> accNumber;
 		cout << "Enter the cost:";
 		cin >> cost;
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
 	void get()
 	{
-		cout << "Name of the author : " << authorName << endl;
+		cout << "\nName of the author : " << authorName << endl;
 		cout << "Year of publication  : " << year << endl;
 		cout << "Name of book : " << bookName << endl;
 		cout << "Publishers name : " << publisherName << endl;
@@ -37,31 +39,29 @@ public:
 void max(Book a, Book b, Book c) {
 	if (a.cost > b.cost)
 		if (a.cost > c.cost)
-			cout << a.bookName << " is the most expensive" << endl;
+			cout << a.bookName << " is the most expensive book." << endl;
 		else	
-			cout << c.bookName << " is the most expensive" << endl;
+			cout << c.bookName << " is the most expensive book." << endl;
 	else
 		if (b.cost > c.cost)
-			cout << b.bookName << " is the most expensive" << endl;
+			cout << b.bookName << " is the most expensive book." << endl;
 		else
-			cout << c.bookName << " is the most expensive" << endl;
-			
+			cout << c.bookName << " is the most expensive book." << endl;	
 }
 
 int main() {
 
 	Book book1, book2, book3;
-	cout << "Enter Details for Book 1" << endl;
+	cout << "\nEnter Details for Book 1" << endl;
 	book1.set();
-	cout << "Enter Details for Book 2" << endl;
+	cout << "\nEnter Details for Book 2" << endl;
 	book2.set();
-	cout << "Enter Details for Book 3" << endl;
+	cout << "\nEnter Details for Book 3" << endl;
 	book3.set();
 
 	book1.get();
 	book2.get();
 	book3.get();
-
 	max(book1, book2, book3);
 
 	return 0;

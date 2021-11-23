@@ -3,14 +3,14 @@ using namespace std;
 
 void factorial(int i)
 {
-	int temp = 1;
+	int fact = 1;
 	for (int j = 1; j <= i; j++)
-		temp = temp*j;
-	cout << "Factorial:" << temp;
+		fact = fact*j;
+	cout << "Factorial: " << fact << endl;
 }
 int main() {
 	int num;
-	cout << "Enter the number:";
+	cout << "Enter the number: ";
 	cin >> num;
 	factorial(num);
     return 0;

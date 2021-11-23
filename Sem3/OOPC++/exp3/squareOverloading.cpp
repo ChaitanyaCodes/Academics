@@ -1,7 +1,6 @@
 #include <iostream>
 using namespace std;
 
-
 int square(int x){
     cout <<"Square of integer number is "<< x*x <<endl;
     return x*x;

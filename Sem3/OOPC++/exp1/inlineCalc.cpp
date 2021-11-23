@@ -17,17 +17,24 @@ inline int multi(int a, int b) {
 int main() {
 	int a, b;
 	float ans;
+	cout << "1.Addition\n2.Subtraction\n3.Multipication\n4.Division\n5.Exit\n\n";
 	while (1) {
-		cout << "1.Addition\n2.Subtraction\n3.Division\n4.Multipication\n5.Exit\n\n=>";
+		cout << "Enter your choice: ";
 		cin >> a;
 		switch (a) {
-		case 1: cout << "Enter the numbers to find the sum\n=>"; cin >> a >> b; ans = add(a, b); break;
-		case 2: cout << "Enter the numbers to find the difference\n=>"; cin >> a >> b; ans = sub(a, b); break;
-		case 3: cout << "Enter the numbers to evaluate the division\n=>"; cin >> a >> b; ans = division(a, b); break;
-		case 4: cout << "Enter the numbers to multiply\n=>"; cin >> a >> b; ans = multi(a, b); break;
+		case 1: cout << "\nEnter the numbers to find the sum\n"; cin >> a >> b; 
+				ans = add(a, b); break;
+		case 2: cout << "\nEnter the numbers to find the difference\n"; cin >> a >> b; 
+				ans = sub(a, b); break;
+		case 3: cout << "\nEnter the numbers to multiply\n"; cin >> a >> b; 
+				ans = multi(a, b); break;
+		case 4: cout << "\nEnter the numbers to evaluate the division\n"; cin >> a >> b; 
+				ans = division(a, b); break;
 		case 5: exit(0);
+		default: cout << "Incorrect choice";
+				 break;
 		}
-		cout << "Ans=" << ans << endl << endl;
+		cout << "Ans = " << ans << endl << endl;
 	} 
     return 0;
 }

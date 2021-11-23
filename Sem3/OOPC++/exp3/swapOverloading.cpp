@@ -9,7 +9,6 @@ void swap(int a, int b){
     cout << "The value of int 'a' is " << a << " and the value of int 'b' is " << b <<endl;
     return;
 }
-
 void swap(float a, float b){
     float temp;
     temp = a; 
@@ -18,7 +17,6 @@ void swap(float a, float b){
     cout << "The value of float 'c' is " << a << " and the value of float 'd' is " << b <<endl;
     return; 
 }
-
 void swap(char a, char b){
     char temp;
     temp = a; 
@@ -40,18 +38,17 @@ int main()
     cin >> b;
     swap(a,b);
     
-    cout << "Enter the float value of a: ";
+    cout << "\nEnter the float value of c: ";
     cin >> c;
-    cout << "Enter the float value of b: ";
+    cout << "Enter the float value of d: ";
     cin >> d;
     swap(c, d);
     
     
-    cout << "Enter the char value of e: ";
+    cout << "\nEnter the char value of e: ";
     cin >> e;
     cout << "Enter the char value of f: ";
     cin >> f;
     swap(e, f);
-    
     return 0;
 }

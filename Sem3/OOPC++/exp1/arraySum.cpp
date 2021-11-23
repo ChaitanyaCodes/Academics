@@ -11,7 +11,7 @@ int main() {
 		cin >> a[j];
 		sum = sum + a[j];
 	}
-	cout << "\nSum:" << sum;
+	cout << "\nSum = " << sum << endl;
 	
     return 0;
 }
