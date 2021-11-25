@@ -18,9 +18,11 @@ public:
 };
 
 int main() {
-	
+	int side;
+	cout << "Enter the length of the side of the square box: ";
+	cin >> side;
 	box rect;
-	box square(4, 4, 4);
+	box square(side, side, side);
 
 	cout << "Reactangle: " << endl;
 	rect.display();

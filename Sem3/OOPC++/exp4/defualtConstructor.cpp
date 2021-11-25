@@ -51,15 +51,22 @@ void display(fraction& obj){
 }
 
 int main() {
-	int pause = 0;
+	int pause = 0, num, den;
 	fraction obj;
-	fraction obj2(20,10);
+	cout << "Enter the numerator: ";
+	cin >> num;
+	cout << "Enter the denominator: ";
+	cin >> den;
+	fraction obj2(num,den);
 	fraction obj3(obj2);
 
+	cout << "Default constructor: ";
 	display(obj);
+	cout << "Parametrised constructor: ";
 	display(obj2);
-	obj2.eval_func();
+	cout << "Copy constructor: ";
 	display(obj3);
+	obj2.eval_func();
 
 	_getch();
 	return 0;

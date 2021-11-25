@@ -47,7 +47,6 @@ public:
 		cout << "Interest amount : "<< interest << endl;
 		return; 
 	}
-
 	friend void display(BankAccount&);
 };
 
@@ -59,18 +58,18 @@ void display(BankAccount& obj) {
 int main() {
 	BankAccount customer1;
 	BankAccount customer2(customer1);
-
+	
+	cout << "\n--- Object 1 ---"  << endl;
 	customer1.deposit(1000);
 	customer1.withdraw(500);
 	customer1.calculate_interest(10,2);
-
-	/*customer2.deposit(2000);
-	customer2.withdraw(500);
-	customer1.calculate_interest(10, 4); */
-
 	display(customer1);
+	
+	cout << "\n--- Object 2 ---" << endl;
+	customer2.deposit(2000);
+	customer2.withdraw(500);
+	customer1.calculate_interest(10, 4);
 	display(customer2);
-
 	_getch();
 	return 0;
 }

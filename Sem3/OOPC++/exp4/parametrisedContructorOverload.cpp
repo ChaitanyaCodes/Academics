@@ -17,14 +17,14 @@ public:
 	}
 
 	//Passing three argument to the constructor
-	vehicle(string nameV, int wheels, int costI) {
+	vehicle(string nameV, int wheels, double costI) {
 		name = nameV;
 		no_of_wheels = wheels;
 		cost = costI;
 	}
 
 	void display() {
-		cout << "The "<< name << " has " << no_of_wheels << " wheels." << "The cost of the vehicle is Rs." << cost << endl;
+		cout << "The "<< name << " has " << no_of_wheels << " wheels and " << "the cost of the vehicle is Rs." << cost << endl;
 	}
 };
 
@@ -32,7 +32,8 @@ int main() {
 	int wheels, costI;
 	double costD;
 	string name; 
-
+	
+	cout << "OBJECT 1:"<< endl;
 	cout << "Enter the model name of the vehicle : ";
 	cin >> name;
 	cout << "Enter the number of wheels the vehicle has : ";
@@ -41,15 +42,16 @@ int main() {
 	cin >> costI; 
 	vehicle obj1(name, wheels, costI);
 
+	cout << "\nOBJECT 2:"<< endl;
 	cout << "Enter the model name of the vehicle : ";
 	cin >> name;
 	cout << "Enter the number of wheels the vehicle has : ";
 	cin >> wheels;
 	vehicle obj2(name, wheels);
 	
-	cout << "OBJECT 1:"<< endl;
+	cout << "\nOBJECT 1:"<< endl;
 	obj1.display();
-	cout << "OBJECT 2:"<< endl;
+	cout << "\nOBJECT 2:"<< endl;
 	obj2.display();
 
 	return 0;

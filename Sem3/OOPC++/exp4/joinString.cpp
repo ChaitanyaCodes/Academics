@@ -1,19 +1,19 @@
 #include <iostream>
 #include <conio.h>
-#include <string.h>
+
 using namespace std;
 
 class Strings
 {
-    char *str = new char;
-
+    char *str;
+    
 public:
     void getStr(){
         cin >> str;
     }
 
     void concat(Strings b){
-        strcat_s(str, b.str);
+        strcat(str, b.str);
         cout << str;
     }
 };
@@ -25,6 +25,6 @@ int main(){
     cout << "Enter Second string: ";
     str2.getStr();
     cout << "Concatenated string is: ";
-    str1.concat(str2);
+   // str1.concat(str2);
     return 0;
 }
