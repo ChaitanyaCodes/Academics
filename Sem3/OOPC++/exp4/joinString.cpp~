@@ -36,7 +36,7 @@ public:
 int main(){
     char *str = "Hello";
     Strings str1(str), str2("World"), s1;
-    // s1.concat(str1,str2);
+    s1.concat(str1,str2);
     s1.display();
     return 0;
 }
