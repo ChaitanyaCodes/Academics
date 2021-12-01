@@ -19,6 +19,8 @@ void main(){
 	printf("The sorted elements are : ");	
 	for(i = 0;i < n; i++)
 		printf("%d\t",arr[i]);
+		
+	printf("\n");
 }
 
 void insertion(int array[], int size){
