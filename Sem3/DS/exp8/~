@@ -1,0 +1,13 @@
+#include<iostream>
+#include<conio.h>
+using namespace std;
+
+int main(){
+	int ival = 2048; 
+	int *iptr;
+	double *dptr;
+	
+	ival = iptr;
+	cout << ival;
+	return 0;
+}
