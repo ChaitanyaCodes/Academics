@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>NESTED TABLES</title>
+    <style>
+      table {
+        text-align: center;
+        border: 1px solid red;
+        padding: 10px;
+      }
+
+      #one tr,
+      #one th,
+      #one td {
+        border: 1px solid red;
+        padding: 5px;
+      }
+
+      #two tr,
+      #two th,
+      #two td,
+      #two {
+        border: 2px solid green;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <table id="one">
+      <tr>
+        <th>row/Column</th>
+        <th>1st</th>
+        <th>2nd</th>
+      </tr>
+      <tr>
+        <th>Saturday</th>
+        <td>Database</td>
+        <td>XML</td>
+      </tr>
+      <tr>
+        <th>Sunday</th>
+        <td>Java</td>
+        <td>
+          <table id="two">
+            <tr>
+              <th>Batch A</th>
+              <th>Batch B</th>
+            </tr>
+            <tr>
+              <td>HTML</td>
+              <td>CSS</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

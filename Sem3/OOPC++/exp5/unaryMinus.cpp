@@ -25,11 +25,13 @@ public:
 
 };
 
-//int main() {
-///	temperatureLoc loc;
-//	loc.display();
-///	-loc;
-///	loc.display();
-//	_getch();
-//	return 0;
-//}
+int main() {
+	temperatureLoc loc;
+	cout << "Positive Temperature: " << endl;
+	loc.display();
+	-loc;
+	cout << "Negative Temperature: " << endl;
+	loc.display();
+	_getch();
+	return 0;
+}

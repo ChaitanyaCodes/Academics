@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <title>Student Data Example</title>
+    <script type="text/javascript">
+      function showResult() {
+        var name = document.getElementById("name").value;
+        var cls = document.getElementById("class").value;
+        var mark1 = parseInt(document.getElementById("sub1").value);
+        var mark2 = parseInt(document.getElementById("sub2").value);
+        var mark3 = parseInt(document.getElementById("sub3").value);
+        if (!(name && cls && mark1 && mark2 && mark3)) {
+          alert("All fields are important. Pleae enter values in all field.");
+        } else {
+          var total = mark1 + mark2 + mark3;
+          var avg = total / 3;
+          var grade, result;
+          if (avg >= 60) {
+            grade = "A";
+            result = "First Class";
+          } else if (avg < 60 && avg >= 50) {
+            grade = "B";
+            result = "Second Class";
+          } else if (avg < 50 && avg >= 40) {
+            grade = "C";
+            result = "Third Class";
+          } else {
+            grade = "D";
+            result = "Fail";
+          }
+          document.write("<h2>Results</h2>");
+          document.write("<b>Name        :" + name + "</b></br></br>");
+          document.write("<b>Class       :" + cls + "</b></br></br>");
+          document.write("<b>Total Marks :" + total + "</b></br></br>");
+          document.write("<b>Average     :" + avg + "</b></br></br>");
+          document.write("<b>Grade       :" + grade + "</b></br></br>");
+          document.write("<b>Result      :" + result + "</b></br></br>");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <form onsubmit="showResult()">
+      <label>Enter Student's Name: <input type="text" id="name" /></label
+      ><br /><br />
+      <label>Enter Student's Class: <input type="text" id="class" /></label
+      ><br /><br />
+      <label>Enter Subject1's Marks: <input type="text" id="sub1" /></label
+      ><br /><br />
+      <label>Enter Subject2's Marks: <input type="text" id="sub2" /></label
+      ><br /><br />
+      <label>Enter Subject3's Marks: <input type="text" id="sub3" /></label
+      ><br /><br />
+      <input type="submit" />
+    </form>
+  </body>
+</html>
