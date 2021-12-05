@@ -1,6 +1,8 @@
 #include<iostream>
 #include<conio.h>
+#include<stdlib.h>
 #include<string>
+
 using namespace std;
 class BasicInfo
 {
@@ -9,8 +11,12 @@ class BasicInfo
 public:
 	void getb()
 	{
-		cout << "Enter name,employee id and gender:\n";
-		cin >> name >> empID >> gender;
+		cout << "Enter employee name: ";
+		cin >> name;
+		cout << "Enter employee ID: ";
+		cin >> empID;
+		cout << "Enter employee gender: ";
+		cin >> gender;
 	}
 	void displayb()
 	{
@@ -27,8 +33,12 @@ public:
 	void getd()
 	{
 		BasicInfo::getb();
-		cout << "Enter department name,designation and salary:\n";
-		cin >> deptName >> designation >> salary;
+		cout << "Enter department name: ";
+		cin >> deptName;
+		cout << "Enter designation: ";
+		cin >> designation;
+		cout << "Enter salary: ";
+		cin >> salary;
 	}
 	void displayd()
 	{
@@ -45,14 +55,16 @@ public:
 	void getl()
 	{
 		BasicInfo::getb();
-		cout << "Enter loan type and amount " << endl;
-		cin >> LoanType >> Amount;
+		cout << "Enter loan type: ";
+		cin >> LoanType;
+		cout << "Enter loan amount: ";
+		cin >> Amount;
 	}
 	void displayl()
 	{
 		BasicInfo::displayb();
 		cout << "Loan type: " << LoanType << endl;
-		cout << "Amount: " << Amount << endl;
+		cout << "Loan Amount: " << Amount << endl;
 	}
 };
 int main()
@@ -60,12 +72,16 @@ int main()
 	DeptInfo d;
 	LoanInfo l;
 	
+	cout << "----- Employee & Department Information -----" << endl;
 	d.getd();
+	cout << "\n----- Details -----" << endl;
 	d.displayd();
 	
 	cout << endl;
 	
+	cout << "----- Employee & Loan Information -----" << endl;
 	l.getl();
+	cout << "\n ----- Details -----" << endl;
 	l.displayl();
 
 	_getch();

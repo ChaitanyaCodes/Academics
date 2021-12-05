@@ -2,37 +2,42 @@
 #include<conio.h>
 using namespace std;
 
+const int SIZE = 5; 
 
 class Subscript {
-	int size = 5;
-	int arr[5] = { 0 };
+	int arr[SIZE];
 public:
 
 	Subscript() {
 		int i = 0;
 		cout << "Enter the values: " << endl;
-		while (i < size) {
+		while (i < SIZE) {
+			cout << "arr[" << i << "] = ";
 			cin >> arr[i];
 			i++;
 		}
 	}
 
-	 int &operator [](int i) {
-		 if (i > size) {
-			 cout << "Index out of bound"<<endl;
-			 return arr[0];
-		 }
-		 else {
-			 return arr[i];
-		 }
+	int &operator [](int i) {
+		if (i > SIZE) {
+			cout << "Index out of bound" << endl;
+			return arr[0];
+		}
+		else {
+			return arr[i];
+		}
 	}
 };
 
 int main() {
 	Subscript obj;
-	
-	obj.arr[](6);
-
+	cout << "--- DISPLAY ---" << endl;
+	cout << "arr[ 3 ] = ";
+	cout<<obj[3]<<endl;
+	cout << "arr[ 4 ] = ";
+	cout << obj[4] << endl;
+	cout << "arr[ 7 ] = ";
+	obj[7];
 	_getch();
 	return 0;
 }

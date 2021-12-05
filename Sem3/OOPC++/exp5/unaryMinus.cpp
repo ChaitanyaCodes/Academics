@@ -19,7 +19,7 @@ public:
 	}
 
 	void display() {
-		cout << "The temperature of the location is " << tempDegree << endl;
+		cout << "The temperature of the location is " << tempDegree << " degree." << endl;
 		return;
 	}
 

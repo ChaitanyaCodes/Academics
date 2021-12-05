@@ -39,10 +39,12 @@ int main()
 	shape *bptr;
 	rectangle r;
 	triangle t;
+	cout << "----- Area of rectangle -----" << endl;
 	r.get();
 	bptr = &r;
 	bptr->area();
 	cout << endl << endl;
+	cout << "----- Area of triangle -----" << endl;
 	t.get();
 	bptr = &t;
 	bptr->area();

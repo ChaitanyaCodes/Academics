@@ -23,11 +23,6 @@ public:
 		}
 	}
 
-	//diplay current value of the members.
-	void display() {
-		return;
-	}
-
 };
 
 int main() {

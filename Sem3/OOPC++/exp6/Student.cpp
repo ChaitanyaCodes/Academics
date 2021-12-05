@@ -1,69 +1,82 @@
-#include<iostream>
-#include<conio.h>
+#include <iostream>
+#include <conio.h>
 using namespace std;
 class student
 {
-	int roll;
-public: 
+	int rollNo;
+
+public:
 	void getinfo()
 	{
 		cout << "Enter Roll no: ";
-		cin >> roll;
+		cin >> rollNo;
 		cout << endl;
 	}
 };
-class test :public student
+
+class test : public student
 {
-	int mrks[5];
+	int marks[5];
+
 protected:
-	double total=0;
+	double total;
+
 public:
 	void gett()
 	{
-		cout << "Enter marks for 5 subjects:\n";
-		for (int i = 0;i <= 4;i++)
-		cin >> mrks[i];
+		cout << "Enter marks for the following subjects out of 25:\n";
+		for (int i = 0; i <= 4; i++)
+		{
+			cout << "CE" << i << " = ";
+			cin >> marks[i];
+		}
 	}
 	void showt()
 	{
-		for (int i = 0;i <= 4;i++)
-			total += mrks[i];
+		for (int i = 0; i <= 4; i++)
+			total += marks[i];
 	}
 	void displayt()
 	{
 		cout << "Entered marks are: \n";
-		for (int i = 0;i <= 4;i++)
-			cout<< mrks[i]<<" ";
+		for (int i = 0; i <= 4; i++)
+			cout << marks[i] << " ";
 	}
 };
+
 class sports
 {
-protected:int smrks;
+protected:
+	int sMarks;
+
 public:
 	void gets()
 	{
-		cout <<"Enter sports marks:\n";
-		cin >> smrks;
+		cout << "Enter sports marks: ";
+		cin >> sMarks;
 	}
 	void displays()
 	{
-		cout << "\nEntered sports marks are: " << smrks << endl;
+		cout << "\nSports marks are: " << sMarks << endl;
 	}
 };
-class result:public sports,public test
+
+class result : public sports, public test
 {
 	float res;
+
 public:
 	void totalr()
 	{
-		res = total + smrks;
-		res = res / 6;
+		res = total + sMarks;
+		res = (res/ 150) * 100;
 	}
 	void displayr()
 	{
-		cout << "\nResult is: " << res << endl;
+		cout << "\nResult : " << res << "%" << endl;
 	}
 };
+
 int main()
 {
 	result r;

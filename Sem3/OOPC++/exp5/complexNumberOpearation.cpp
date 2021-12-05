@@ -61,19 +61,19 @@ int main() {
 	complexNum num1, num2, resultA(0,0), resultS(0,0), resultM(0,0), resultD(0,0);
 
 	resultA = num1 + num2;
-	cout << "ADDITION" << endl;
+	cout << "\nADDITION" << endl;
 	resultA.display();
 
 	resultS = num1 - num2;
-	cout << "SUBTRATION" << endl;
+	cout << "\nSUBTRATION" << endl;
 	resultS.display();
 
 	resultM = num1 * num2;
-	cout << "MULTIPLICATION" << endl;
+	cout << "\nMULTIPLICATION" << endl;
 	resultM.display();
 
 	resultD = num1 + num2;
-	cout << "DIVISION" << endl;
+	cout << "\nDIVISION" << endl;
 	resultD.display();
 
 	_getch();

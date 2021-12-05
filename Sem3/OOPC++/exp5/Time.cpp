@@ -33,12 +33,12 @@ public:
 
 };
 
-//int main() {
-//	Time obj;
-//	for(int i = 0; i < 10; i++) {
-//		++obj;
-//		obj.display();
-//	}
-//	_getch();
-//	return 0;
-//}
+int main() {
+	Time obj;
+	for(int i = 0; i < 10; i++) {
+		++obj;
+		obj.display();
+	}
+	_getch();
+	return 0;
+}
