@@ -1,0 +1,322 @@
+
+Divide and Conquer (DAC) approach has three steps at each level of recursion:
+
+Divide the problem into number of smaller units called sub-problems.
+Conquer (Solve) the sub-problems recursively.
+Combine the solutions of all the sub-problems into a solution for the original problem.
+Maximum and Minimum:
+
+
+
+
+
+************************************************************************************************************************************
+Algorithm MergeSort(a,n,low,high)
+{
+    // n be no of elements
+    // a be size of n
+    
+	if(low<high)
+	{
+	    mid=(low+high)/2;
+        MergeSort(a,low,mid);
+
+        MergeSort(a,mid+1,high);
+
+        Merge(a,b,low,mid,high)
+	}
+}
+
+Algorithm Merge(a,b,low,mid,high)
+{
+    i:=low
+    j=:=mid+1
+    //let b be any global array of size same as a
+	while(i<=mid&&j<=high)
+	{
+	   if(a[i]<a[j]){
+	   b[k++]=a[i++];
+	   }else{
+	   b[k++]=a[j++];
+	   }
+	}
+
+    while(i<=mid)
+    {
+       b[k++]=a[i++];
+    }
+    while(j<=high)
+    {
+       b[k++]=a[j++];
+    }
+    for i:=1 to n:
+    a[i] =b[i]
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+*************************************************************************************************************************************
+Algorithm MAXMIN(a,n,low,high,max,min)
+{
+   // a is array of size n
+   // n no of elemnts
+   // let max be a global  variable  initialized to INT_MIN
+   // let min be a global variable initialized to INT_MAX
+   if(low==high) {
+        if(min>a[low]) min:=a[low];
+        if(max>a[low]) max:=a[low];
+        
+   }
+   else if(low+1==high)
+   {
+        if(a[high]>a[low]) 
+        {
+          min:=a[low];
+          max:=a[high];
+        }
+        else{
+          min:=a[high];
+          max:=a[low];
+
+
+        }
+   }
+   else{
+     mid=(low+high)/2;
+     MAXMIN(a,n,low,mid,max,min);
+     MAXMIN(a,n,mid+1,high,max1,min1);
+     if(max1>max) max:=max1
+     if(min1<min) min:=min1
+   }
+
+   
+}
+
+In this approach, the array is divided into two halves. Then using recursive approach maximum and minimum numbers in each halves are found. Later, return the maximum of two maxima of each half and the minimum of two minima of each half.
+
+TIME Complexity:
+
+If T(n) represents this no., then the resulting recurrence relations is
+T (n)=T([n/2]+T[n/2]+2  n>2
+1  n=2
+1  n=1
+When ‘n’ is a power of 2, n=2k for some positive integer ‘k’, then
+T (n) = 2T(n/2) +2
+ = 2(2T(n/4)+2)+2
+ = 4T(n/4)+4+2
+ = 2k-1 T (2) + Σ 1 ≤ I ≤ k-1 ≤ 2i
+ = 2k-1+ 2k - 2
+T(n) = (3n/2) – 2
+
+Note that (3n/2) - 2 is the best-average and worst-case no. of comparisons when ‘n’ is a power of 2.
+
+
+
+
+**************************************************************************************************************************************
+QuickSort is a Divide and Conquer algorithm. It picks an element as pivot and partitions the given array around the picked pivot. There are many different versions of quickSort that pick pivot in different ways. 
+
+Always pick first element as pivot.
+Always pick last element as pivot (implemented below)
+Pick a random element as pivot.
+Pick median as pivot.
+The key process in quickSort is partition(). Target of partitions is, given an array and an element x of array as pivot, put x at its correct position in sorted array and put all smaller elements (smaller than x) before x, and put all greater elements (greater than x) after x. All this should be done in linear time.
+
+Algorithm QuickSort(a,n,low,high)
+{
+	if(low<high)
+	{
+	    p = partition(a,low,high+1)
+
+        QuickSort(a,low,p-1);
+        QuickSort(a,p+1,high);
+	}
+}
+Algorithm Partition(a,low,high)
+{
+    i=low
+    j=high
+    pivot = a[low]
+	repeat {
+        repeat i++
+        until(a[i]>a[pivot])
+        repeat j--
+        until(a[j]<a[pivot])
+        if(i<j) interchange(a,i,j)
+
+
+	}unitl(i<j)
+	a[low]=a[j]
+    a[j] = pivot
+	return j
+}
+algorithm interchange(a,i,j)
+{
+	temp=a[i];
+	a[i]=a[j];
+	a[j]=temp;
+}
+Quicksort algorithm is based on the divide and conquer approach where
+
+An array is divided into subarrays by selecting a pivot element (element selected from the array).
+While dividing the array, the pivot element should be positioned in such a way that elements less than pivot are kept on the left side and elements greater than pivot are on the right side of the pivot.
+The left and right subarrays are also divided using the same approach. This process continues until each subarray contains a single element.
+At this point, elements are already sorted. Finally, elements are combined to form a sorted array.
+
+
+**************************************************************************************************************************************
+Algorithm kthSmallest(int A[], int left, int right, int K)
+{
+    if (left == right)
+         return A[left]
+    int p = partition(A, left, right)
+    count = p - left + 1
+    if ( count == K )
+         return A[pos]
+    else if ( count > K )      
+         return kthSmallest(A, left, p-1, K)
+    else                 
+         return kthSmallest(A, p+1, right, K-i)   
+}
+
+Algorithm Partition(a,low,high)
+{
+    i=low
+    j=high
+    pivot = a[low]
+  repeat {
+        repeat i++
+        until(a[i]>a[pivot])
+        repeat j--
+        until(a[j]<a[pivot])
+        if(i<j) interchange(a,i,j)
+
+
+  }unitl(i<j)
+  a[low]=a[j]
+    a[j] = pivot
+  return j
+}
+algorithm interchange(a,i,j)
+{
+  temp=a[i];
+  a[i]=a[j];
+  a[j]=temp;
+}
+
+implementation
+The algorithm is similar to QuickSort. 
+The difference is, instead of recurring for both sides (after finding pivot), it recurs only for the part that contains the k-th smallest element. The logic is simple, if index of partitioned element is more than k, then we recur for left part. If index is same as k, we have found the k-th smallest element and we return. If index is less than k, then we recur for right part. This reduces the expected complexity from O(n log n) to O(n), with a worst case of O(n^2).
+
+Like quicksort, it is fast in practice, but has poor worst-case performance. It is used in
+The partition process is same as QuickSort, only recursive code differs.
+There exists an algorithm that finds k-th smallest element in O(n) in worst case, but QuickSelect performs better on average. 
+**************************************************************************************************************************************
+Algoritm KnapSack(n,m,w,p)
+{
+	// n is no weights
+	// m is knapsack size
+    // w is array of weights 
+    // p is array of profits
+    // (p[i]/[w[i]])>=(p[i+1]/w[i+1])
+    U:=m
+    for i:=1 to n do
+       x[i]:=0
+    for i:=1 to n do
+       if(w[i]>U) break;
+       x[i]= 1;
+       U=U-w[i];
+
+    if(i<n) x[i] = U/w[i];
+}
+
+TIME COMPLEXITY
+First sort according to profit to weight ratio time req : nlogn
+Then we need one scan to find out max take of profit to weight ratio time needed is: n
+Overall Time complexity : nlogn + n = O(nlogn)
+
+
+**************************************************************************************************************************************
+
+
+Algorithm prim(v,n)
+{
+	//v is graph
+	//n is no of vertices
+	no_of_edges=0
+	while(no_of_edges!=n-1)
+	{
+	  min:=INT_MAX
+      x,y
+	  for i:=1 to n do 
+	  {
+	      for j=1 to n do
+	      {
+	          if(v[i][j]<min)
+	          {
+	              min = v[i][j]
+	              x=i
+	              y=j
+	          }
+	      }
+	  }
+	  total=total+min
+	  no_of_edges++;
+	}
+}
+
+
+
+Algorithm prim(v,n,parent,cost)
+{
+  //v is graph
+  //n is no of vertices
+  //let cost be the array of minimum cost for each vertex to become a part of spanning tree
+  //let parent be the array which will store the immediate parent of each vertex 
+  // initialize total cost to 0
+  total := 0
+  no_of_edges=0
+  cost[1] = 0  //cost of starting vertex is 0 
+  while(no_of_edges!=n-1)
+  {
+    //find n-1 edges in graph to create a spanning tree
+    Let x be an unvisited vertex with minimum cost among all other unvisited vertices to connect to spanning tree
+    //To find x we need to run throust cost array with min variable to track minimum cost
+    min := Inf
+    for i:=1 to n do
+    {
+       if(visited[i]==false and min>cost[i]) then
+       {
+          min := cost[i];
+          x := i
+       }
+
+    }
+    visited[x] = true;
+    
+
+    for i:=1 to n do 
+    {
+        if(visited[i]==false and v[x][i]<cost[i]) then
+       {
+          cost[i] := v[x][i]
+          parent[i] := x
+       }
+    }
+    
+    no_of_edges++;
+  }
+}
+
+

@@ -1,0 +1,82 @@
+Kruskal’s Algorithm
+Kruskal's algorithm is a minimum spanning tree algorithm that takes a graph as input and finds the subset of the edges of that graph which
+
+form a tree that includes every vertex
+has the minimum sum of weights among all the trees that can be formed from the graph
+
+How Kruskal's algorithm works
+It falls under a class of algorithms called greedy algorithms that find the local optimum in the hopes of finding a global optimum.
+
+We start from the edges with the lowest weight and keep adding edges until we reach our goal.
+
+The steps for implementing Kruskal's algorithm are as follows:
+
+Sort all the edges from low weight to high
+Take the edge with the lowest weight and add it to the spanning tree. If adding the edge created a cycle, then reject this edge.
+Keep adding edges until we reach all vertices.
+
+The most common way to find this out is an algorithm called Union FInd. The Union-Find algorithm divides the vertices into clusters and allows us to check if two vertices belong to the same cluster or not and hence decide whether adding an edge creates a cycle.
+
+
+Prim's algorithm is another popular minimum spanning tree algorithm that uses a different logic to find the MST of a graph. Instead of starting from an edge, Prim's algorithm starts from a vertex and keeps adding lowest-weight edges which aren't in the tree, until all vertices have been covered.
+
+
+
+
+Algorithm implementation
+When a connected and undirected graph is given, a spanning tree of such a graph is the subgraph which is a tree that connects all of the vertices.
+A single graph can have multiple spanning trees.
+A minimum spanning tree (MST) (also known as minimum weight spanning tree) for a weighted, connected and undirected graph is a spanning tree that weighs less than or equal to the weight of every other spanning tree.
+The weight of a spanning tree is determined by adding the weights associated with every edge of the spanning tree.
+The Minimum Spanning Tree can be built from the vertex that has the minimum weight in the graph.
+One node is traversed only once.
+It runs quickly in sparse graphs.
+The time complexity is O(E log V), where V is the number of vertices.
+It can work with disconnected components too.
+
+
+Steps to find MST using the Kruskal's algorithm:
+Sort the edges in ascending order of their associated weight.
+Select the smallest edge.
+Check to see if it forms a cycle with the spanning-tree that has been formed until that point in time.
+If the cycle hasn't been formed, this edge has to be included.
+Otherwise, it can be discarded.
+Steps 2,3,4 are repeated until the spanning tree contains V-1 edges.
+
+
+Kruskal's Algorithm Applications
+In order to layout electrical wiring
+In computer network (LAN connection)
+
+Kruskal’s Algorithm Time Complexity-
+ 
+
+Worst case time complexity of Kruskal’s Algorithm
+= O(ElogV) or O(ElogE)
+Analysis-
+ 
+
+The edges are maintained as min heap.
+The next edge can be obtained in O(logE) time if graph has E edges.
+Reconstruction of heap takes O(E) time.
+So, Kruskal’s Algorithm takes O(ElogE) time.
+The value of E can be at most O(V2).
+So, O(logV) and O(logE) are same.
+
+For a graph with E edges and V vertices, Kruskal's algorithm can be shown to run in O(E log E) time, or equivalently, O(E log V) time, all with simple data structures. These running times are equivalent because:
+
+E is at most {\displaystyle V^{2}}V^{2} and {\displaystyle \log V^{2}=2\log V\in O(\log V)}{\displaystyle \log V^{2}=2\log V\in O(\log V)}.
+Each isolated vertex is a separate component of the minimum spanning forest. If we ignore isolated vertices we obtain V ≤ 2E, so log V is {\displaystyle O(\log E)}{\displaystyle O(\log E)}.
+We can achieve this bound as follows: first sort the edges by weight using a comparison sort in O(E log E) time; this allows the step "remove an edge with minimum weight from S" to operate in constant time. Next, we use a disjoint-set data structure to keep track of which vertices are in which components. We place each vertex into its own disjoint set, which takes O(V) operations. Finally, in worst case, we need to iterate through all edges, and for each edge we need to do two 'find' operations and possibly one union. Even a simple disjoint-set data structure such as disjoint-set forests with union by rank can perform O(E) operations in O(E log V) time. Thus the total time is O(E log E) = O(E log V).
+
+Provided that the edges are either already sorted or can be sorted in linear time (for example with counting sort or radix sort), the algorithm can use a more sophisticated disjoint-set data structure to run in O(E α(V)) time, where α is the extremely slowly growing inverse of the single-valued Ackermann function.
+
+
+Analysis
+Since the complexity is O(Elog(V)), the Kruskal algorithm is better used with sparse graphs, where we don’t have lots of edges.
+
+However, since we are examining all edges one by one sorted on ascending order based on their weight, this allows us great control over the resulting MST. Since different MSTs come from different edges with the same cost, in the Kruskal algorithm, all these edges are located one after another when sorted.
+
+Therefore, when two or more edges have the same weight, we have total freedom on how to order them. The order we use affects the resulting MST. Of course, the cost will always be the same regardless of the order of edges with the same weight. However, the edges we add to mst might be different.
+
+Another aspect to consider is that the Kruskal algorithm is fairly easy to implement. The only restrictions are having a good disjoint set data structure and a good sort function.

@@ -1,0 +1,20 @@
+DATE: 15-03-2021 	SUB: MADF
+# Performance analysis 
+	Factors that governs Performance analysis 
+	How to compute Performance analysis 
+	Crietria for judging the algorithm
+	For checking efficiency in terms of implementation
+	Space and Time complexity
+	Examples of the Space and time complexity
+	Define Space complexity
+	Prior Estimates (Factor analysis, Performace analysis[to check time complexity, memory used])
+	Poserior Testing (Testing of code to check legitimity of code where test cases are given)
+	Fixed part space(whoes size of the variable are fixed [int,double,char]) 
+	Variable part space(Depends of size of the program ,space and time requirments depends on instance characteristics) 
+	Represnation of Space 
+	Types of algorithm(sumation algorithm)
+	Define Time complexity
+	Factors that affect Time complexity
+	To estimate the time complexity there is a concept called program step
+	
+

@@ -1,0 +1,134 @@
+AIM
+Implementation of Minimum Cost Spanning Tree(Using Prim's Algo) and estimate its step count.
+-------------------------------------------------------------------------------------------------------------------------------------------
+THEORY
+
+Prim's algorithm is a minimum spanning tree algorithm that takes a graph as input and finds the subset of the edges of that graph which
+•	form a tree that includes every vertex
+•	has the minimum sum of weights among all the trees that can be formed from the graph
+
+NOTE:
+	A spanning tree is a subgraph of an undirected graph, containing all of the graph’s vertices, connected with the fewest number of edges. A sanning tree cannot contain a cycle and cannot be disconnected.
+	A minimum spanning tree is a spanning tree with weighted edges in which the total weight of all edges is minimized.
+
+
+How Prim's algorithm works
+It falls under a class of algorithms called greedy algorithms that find the local optimum in the hopes of finding a global optimum.
+ 
+NOTE:
+A greedy algorithm constructs a solution step-by-step and picks the most optimal path at every step.
+
+We start from one vertex and keep adding edges with the lowest weight until we reach our goal.
+The steps for implementing Prim's algorithm are as follows:
+1.	Initialize the minimum spanning tree with a vertex chosen at random.
+2.	Find all the edges that connect the tree to new vertices, find the minimum and add it to the tree
+3.	Keep repeating step 2 until we get a minimum spanning tree
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+ALGORITHM
+Algorithm prim(v,n,parent,cost)
+{
+  //v is graph
+  //n is no of vertices
+  //let cost be the array of minimum cost for each vertex to become a part of spanning tree
+  //let parent be the array which will store the immediate parent of each vertex 
+  // initialize total cost to 0
+  total := 0
+  no_of_edges=0
+  cost[1] = 0  //cost of starting vertex is 0 
+  while(no_of_edges!=n-1)
+  {
+    //find n-1 edges in graph to create a spanning tree
+    Let x be an unvisited vertex with minimum cost among all other unvisited vertices to connect to spanning tree
+    //To find x we need to run throust cost array with min variable to track minimum cost
+    min := Inf
+    for i:=1 to n do
+    {
+       if(visited[i]==false and min>cost[i]) then
+       {
+          min := cost[i];
+          x := i
+       }
+
+    }
+    visited[x] = true;
+    
+
+    for i:=1 to n do 
+    {
+        if(visited[i]==false and v[x][i]<cost[i]) then
+       {
+          cost[i] := v[x][i]
+          parent[i] := x
+       }
+    }
+    
+    no_of_edges++;
+  }
+}
+-------------------------------------------------------------------------------------------------------------------------------------------
+Algorithm implementation
+Prim's algorithm Mininum Spanning Tree (MST)
+It is a greedy algorithm.
+It begins with an empty spanning tree. Two sets of vertices are maintained.
+The first set would contain the vertices which are already included in the MST, whereas the other set contains the vertices that haven't been included yet.
+At every step, the algorithm considers all the edges that would connect the two sets. It then picks the minimum weight edge among these edges.
+After this step, the algorithm moves to the other endpoint of the edge of the set that contains MST.
+The Minimum Spanning Tree can be built from any vertex in the graph.
+An visited is created, that keeps track of vertices that are already included in MST.
+A cost value is assigned to all vertices of the input graph.
+The cost values are initially assigned as 'INFINITE'.
+The cost value 0 is assigned to the first vertex so that it can be picked first.
+When visited doesn't include all of the vertices, the below steps are followed.
+A vertex 'u' is chosen that is not present in the visited and also has minimum key value.
+This 'u' is now included in visited.
+The key value of all the adjacent vertices of 'u' are updated.
+This can be done by iterating through all the adjacent vertices.
+For every adjacent vertex 'v', if the cost of edge 'v' is less than that of the previous key value of 'v' from 'u', the key value is updated as the weight of edge from v to u.
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+TIME COMPLEXITY
+A simple implementation of Prim's, using an adjacency matrix or an adjacency list graph representation and linearly searching an array of weights to find the minimum weight edge to add, requires O(|V|2) running time as there are two nested while loops. However, this running time can be greatly improved further by using heaps to implement finding minimum weight edges in the algorithm's inner loop.
+Each iteration of for loop takes O(n) time. So the total time is O(n^2).
+If we store nodes not yet included in tree as a red-black tree then algorithm takes O(log n) time.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+CONCLUSION
+ It starts to build the Minimum Spanning Tree from any vertex in the graph.
+ It traverses one node more than one time to get the minimum distance.
+ Prim’s algorithm has a time complexity of O(V2), V being the number of vertices and can be improved up to O(E + log V) using Fibonacci heaps.
+ Prim’s algorithm gives connected component as well as it works only on connected graph
+-------------------------------------------------------------------------------------------------------------------------------------------
+Advantages
+The advantage of Prim’s algorithm is its complexity, which is better than Kruskal’s algorithm. Therefore, Prim’s algorithm is helpful when dealing with dense graphs that have lots of edges.
+
+Disadvantages of Prim’s algorithm:
+
+List of edges has to be searched from beginning as new edge gets added.
+If there are more than one edges having same weight then all possible spanning trees are required to be found for final minimal tree.
+
+Applications
+Applications of Minimum spanning trees 
+Theyhave direct applications in the design of networks, 
+including computer networks, 
+telecommunications networks, 
+transportation networks, 
+water supply networks, and electrical grids (which they were first invented for, as mentioned above).
+The standard application is to a problem like phone network design. You have a business with several offices; you want to lease phone lines to connect them up with each other; and the phone company charges different amounts of money to connect different pairs of cities. You want a set of lines that connects all your offices with a minimum total cost. It should be a spanning tree, since if a network isn’t a tree you can always remove some edges and save money.
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Applications of Prim Algorithm
+
+Applications of Kruskal and Prim's algorithms often come up in computer networking. For example, if you have a large LAN with many switches, finding a minimum spanning tree will be vital to ensure that only a minimum number of packets will be transmitted across the network.
+Both Prims And Kruskal Algorithms are used to find the minimum spanning trees. Now the applications of Kruskal and Prims Algorithm are basically the applications of MST. So what are the applications of MST?
+
+Well, to answer a few, here are some of the areas in which you will find them usable:
+
+If you want to connect several cities using highways or rail networks, you can use these algos to find the minimum length of roads/railtracks connecting all these cities.
+Network Design - Suppose you have a business with several offices. You have to lease phone cables to connect all these offices. So you can make use of these algos to find out what is the minimum cost to connect all your offices with minimum use of phone cables.
+Can be used to find the travelling salesman problem. This is a very famous problem using MST.
+You want to apply a set of houses with - Electric Power, Telephone Lines, Sewage Lines.
+Designing Local Area Networks.

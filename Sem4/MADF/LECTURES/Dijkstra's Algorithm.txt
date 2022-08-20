@@ -1,0 +1,181 @@
+Dijkstra's Algorithm
+Dijkstra's algorithm allows us to find the shortest path between any two vertices of a graph.
+
+
+It differs from the minimum spanning tree because the shortest distance between two vertices might not include all the vertices of the graph.
+
+How Dijkstra's Algorithm works
+Dijkstra's Algorithm works on the basis that any subpath B -> D of the shortest path A -> D between vertices A and D is also the shortest path between vertices B and D.
+
+Djikstra used this property in the opposite direction i.e we overestimate the distance of each vertex from the starting vertex. Then we visit each node and its neighbors to find the shortest subpath to those neighbors.
+
+The algorithm uses a greedy approach in the sense that we find the next best solution hoping that the end result is the best solution for the whole problem.
+
+
+
+Dijkstra's Algorithm basically starts at the node that you choose (the source node) and it analyzes the graph to find the shortest path between that node and all the other nodes in the graph.
+The algorithm keeps track of the currently known shortest distance from each node to the source node and it updates these values if it finds a shorter path.
+Once the algorithm has found the shortest path between the source node and another node, that node is marked as "visited" and added to the path.
+The process continues until all the nodes in the graph have been added to the path. This way, we have a path that connects the source node to all other nodes following the shortest path possible to reach each node.
+Requirements
+Dijkstra's Algorithm can only work with graphs that have positive weights. This is because, during the process, the weights of the edges have to be added to find the shortest path.
+
+If there is a negative weight in the graph, then the algorithm will not work properly. Once a node has been marked as "visited", the current path to that node is marked as the shortest path to reach that node. And negative weights can alter this if the total weight can be decremented after this step has occurred.
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+ALGORITHM:
+Algorithm ShortestPaths(v,cost,dist,n)
+//dist[j] ,1<j<n is set to length of sortest pat from vertex v to j in a digraph G with n vertices.
+//dist[v] = 0 and G is represented adjency matrix cost[1:n,1:n]
+{
+	for i:=1 to n do
+	{
+	    S[i] := false
+	    dist[i] := cost[v,i];
+	}
+	S[v] := true
+	dist[v] := 0
+
+	for num:=2  to n-1 do
+	{
+	   determine n-1 paths from v
+	   Choose u from among those vertices not in S such that dist[u] is minimum
+	   S[u] := true
+	   for(each w adjacent to u with S[w]=false) do
+	    if(dist[w]>dist[u]+cost[u,w]) then
+	      dist[w] := dist[u] + cost[u,w]
+	}
+}
+
+Algorithm implementation;
+ 
+The very first step is to mark all nodes as unvisited,
+
+Mark the picked starting node with a current distance of 0 and the rest nodes with infinity, 
+
+Now, fix the starting node as the current node,
+
+For the current node, analyse all of its unvisited neighbours and measure their distances by adding the current distance of the current node to the weight of the edge that connects the neighbour node and current node,
+
+Compare the recently measured distance with the current distance assigned to the neighbouring node and make it as the new current distance of the neighbouring node,
+
+After that, consider all of the unvisited neighbours of the current node, mark the current node as visited,
+
+If the destination node has been marked visited then stop, an algorithm has ended, and
+
+Else, choose the unvisited node that is marked with the least distance, fix it as the new current node, and repeat the process again from step 4. 
+
+ -------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Dijkstra's Algorithm Complexity
+It depends on your implementation of Dijkstra’s Algorithm.
+
+Here V=total no. of vertices. and E= total no. of edges
+
+Simple algorithm is given below with Time complexity of O(V^2).
+
+There are also some time-efficient Algorithms:
+
+Graph represented using adjacency list can be reduced to O(E log V) with the help of binary heap.
+
+Space Complexity: O(V)
+
+IN WORST CASE GRAPH WILL BE A COMPLETE GRAPH I.E TOTAL EDGES= V(V-1)/2 WHERE V IS NO OF VERTICES.
+THAT IS : E>>V AND E ~ V^2
+TIME COMPLEXITY OF DIJKSTRA'S ALGORITHMS IS:
+1. WITH ADJACENCY LIST AND PRIORITY QUEUE:
+O((V+E) LOG V)
+-> IN WORST CASE: E>>V SO O( E LOG V)
+2. WITH MATRIX AND PRIORITY QUEUE:
+O(V^2 + E LOG V)
+-> IN WORST CASE E ~ V^2
+SO O(V^2 + E LOG V) ~ O(E + E LOG V) ~ O(E LOG V).
+3. WITH FIBONACCI HEAP AND ADJACENCY LIST :
+IT WILL BE O( E + V LOG V)I
+TIME COMPLEXITY: O(E LOG V)
+WHERE, E IS THE NUMBER OF EDGES AND V IS THE NUMBER OF VERTICES.
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Advantage and disadvantage
+
+Advantages:-
+The main advantage of Dijkstra’s algorithm is its considerably low complexity, which is almost linear. However, when working with negative weights, Dijkstra’s algorithm can’t be used.
+It can be used to calculate the shortest path between a single node to all other nodes and a single source node to a single destination node by stopping the algorithm once the shortest distance is achieved for the destination node.
+
+It only works for directed-, weighted graphs and all edges should have non-negative values.
+
+1) It is used in Google Maps
+
+2) It is used in finding Shortest Path.
+
+3) It is used in geographical Maps
+
+4) To find locations of Map which refers to vertices of graph.
+
+5) Distance between the location refers to edges.
+
+6) It is used in IP routing to find Open shortest Path First.
+
+7) It is used in the telephone network.
+
+Disadvantages:-
+
+Also, when working with dense graphs, where E is close to V^2, if we need to calculate the shortest path between any pair of nodes, using Dijkstra’s algorithm is not a good option.
+The reason for this is that Dijkstra’s time complexity is  . Since E equals almost V^2 , the complexity becomes  .
+When we need to calculate the shortest path between every pair of nodes, we’ll need to call Dijkstra’s algorithm, starting from each node inside the graph. Therefore, the total complexity will become.
+
+1) It do blind search so wastes lot of time while processing.
+
+2) It cannot handle negative edges.
+
+3) This leads to acyclic graphs and most often cannot obtain the right shortest path.
+
+It does an obscured exploration that consumes a lot of time while processing,
+
+It is unable to handle negative edges,
+
+As it heads to the acyclic graph, so can’t achieve the accurate shortest path, and
+
+Also, there is a need to maintain tracking of vertices, have been visited.
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+Dijkstra's Algorithm Applications
+To find the shortest path
+In social networking applications
+In a telephone network
+To find the locations in the map
+Applications of Dijkstra’s Algorithm
+ 
+
+Before learning any algorithm, we should know the fundamental purpose of using an algorithm that could help us in real-world applications. Such as, for Dijkstra’s algorithm, we are trying to find the solutions to least path based problems. 
+
+ 
+
+For example, if a person wants to travel from city A to city B where both cities are connected with various routes. Which route commonly he/ she should choose?
+
+ 
+
+Undoubtedly, we would adopt the route through which we could reach the destination with the least possible time, distance and even cost. 
+
+ 
+
+Further, with the discussion, it has various real-world use cases, some of the applications are the following:
+
+ 
+
+For map applications, it is hugely deployed in measuring the least possible distance and check direction amidst two geographical regions like Google Maps, discovering map locations pointing to the vertices of a graph, calculating traffic and delay-timing, etc.
+
+For telephone networks, this is also extensively implemented in the conducting of data in networking and telecommunication domains for decreasing the obstacle taken place for transmission.
+
+Wherever addressing the need for shortest path explications either in the domain of robotics, transport, embedded systems, laboratory or production plants, etc, this algorithm is applied.
+
+Besides that, other applications are road conditions, road closures and construction, and IP routing to detect Open Shortest Path First.
