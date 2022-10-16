@@ -1,0 +1,29 @@
+body {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.yellow{
+    border: 1px solid yellow;
+}
+
+.title-container {
+    display: flex;
+}
+
+.name {
+    color: rgb(255, 166, 0);
+    font-weight: 700;
+margin: 1rem 0  .3rem;
+}
+.role{
+    color:rgb(255, 136, 0);
+    margin: .2rem 0;
+    font-style: italic;
+}
+
+.profile-img{
+    max-width: 8rem;
+    margin: 1rem 1.5rem;
+
+}
+
