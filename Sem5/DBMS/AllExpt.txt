@@ -1,0 +1,406 @@
+--------------- EXPT 2 ---------------
+create table EMPLOYEE(Emp_no number, E_name varchar(20), E_address varchar(50), E_ph_no number, Dept_no varchar(10), Dept_name char(20), Job_id varchar(10), Salary number);
+describe EMPLOYEE;
+alter table EMPLOYEE add(HIREDATE date);
+alter table EMPLOYEE modify(Job_id varchar(10));
+alter table EMPLOYEE rename column Emp_no to E_no;
+alter table EMPLOYEE add(Job_field varchar(20));
+alter table EMPLOYEE modify(Job_field varchar(40));
+alter table EMPLOYEE drop column Job_field;
+rename EMPLOYEE to Emp_dept;
+describe Emp_dept;
+drop table Emp_dept;
+
+
+
+
+
+--------------- EXPT 3 ---------------
+create table location(location_id number primary key, regional_group varchar(20));
+describe location;
+create table department(dept_id number primary key, name varchar(30), loc_id number);
+describe department;
+alter table department add foreign key(loc_id) references location(location_id);
+create table job(job_id number primary key, function varchar(30));
+describe job;
+create table employee(emp_id number primary key, lastname varchar(20), firstname varchar(20), job_id number, hire_date date, salary number, dept_id number);
+describe employee;
+alter table employee add foreign key(job_id) references job(job_id);
+alter table employee add foreign key(dept_id) references department(dept_id);
+insert into location(location_id, regional_group) values (231,'Mumbai');
+insert into location(location_id, regional_group) values (311,'Chandigarh');
+insert into location(location_id, regional_group) values (131,'Kolkota');
+insert into location(location_id, regional_group) values (241,'Delhi');
+insert into location(location_id, regional_group) values (421,'Banglore');
+select * from location;
+insert into department(dept_id, name, loc_id) values (1, 'sales', 311);
+insert into department(dept_id, name, loc_id) values (2, 'R&D', 241);
+insert into department(dept_id, name, loc_id) values (3, 'desing', 311);
+insert into department(dept_id, name, loc_id) values (4, 'HR', 231);
+select * from department;
+insert into job(job_id, function) values (11, 'Marketing specialist');
+insert into job(job_id, function) values (15, 'Content Analyst');
+insert into job(job_id, function) values (32, 'Head');
+insert into job(job_id, function) values (22, 'Support Engineer');
+insert into job(job_id, function) values (13, 'Software Engineer');
+select * from job;
+insert into employee(emp_id, lastname, firstname, job_id, hire_date, salary, dept_id) values (1122, 'Gautam', 'Smita', 11, '01-25-2018', 45000, 1);
+insert into employee(emp_id, lastname, firstname, job_id, hire_date, salary, dept_id) values (1123, 'Naik ', 'Sharvani', 15, '04-20-2016', 23000, 3);
+insert into employee(emp_id, lastname, firstname, job_id, hire_date, salary, dept_id) values (1124, 'Mehta', 'Arjun', 22, '05-01-2015', 20000, 2);
+insert into employee(emp_id, lastname, firstname, job_id, hire_date, salary, dept_id) values (1125, 'Mehta', 'Shivang', 32, '10-03-2016', 10000, 1);
+insert into employee(emp_id, lastname, firstname, job_id, hire_date, salary, dept_id) values (1126, 'Naik', 'Shiva', 15, '08-04-2015', 12000, 3);
+insert into employee(emp_id, lastname, firstname, job_id, hire_date, salary, dept_id) values (1127, 'palekar', 'Amrish', 32, '03-05-2016', 11000, 4);
+insert into employee(emp_id, lastname, firstname, job_id, hire_date, salary, dept_id) values (1128, 'Tople', 'Aarya', 13, '09-03-2018', 9000, 2);
+select * from employee;
+select * from employee where firstname = 'Sharvani';
+select firstname, lastname from employee where dept_id = 1 or dept_id = 3;
+update employee set firstname = 'Avita' where firstname='Smita';
+delete employee where firstname='Aarya' and lastname = 'Tople';
+update employee set hire_date= '09/05/2016' where firstname='Shiva' AND lastname='Naik';
+select * from employee where dept_id = 1;
+
+
+
+
+
+--------------- EXPT 4 ---------------
+alter table employee rename column emp_id to id;
+alter table employee rename column lastname to name;
+select name from employee;
+select name, (salary *12) as annaual_salary from employee;
+select firstname, name from employee where salary >= 20000 and salary <= 40000;
+select * from employee where dept_id not in(1,3);
+select * from employee where firstname like 'S%';
+select * from employee where firstname like 'S%a';
+select * from employee where firstname like 'S%' or firstname like 'k%' or firstname like 'A%';
+select * from employee where dept_id = 3 and salary > 20000;
+select id, name from employee order by id asc;
+select id, name from employee order by id desc;
+select * from employee where rownum <= 3 ;
+select UPPER(firstname ) from employee;
+select LOWER(firstname ) from employee;
+select initcap(firstname) from employee; 
+select  avg(salary)from employee;
+select  sum(salary)from employee;
+select  * from employee where salary = (select max(salary) from employee) ;
+select  * from employee where salary = (select  min(salary)from employee) ;
+select firstname, lastname from employee where dept_id = 1 and job_id = 32;
+select firstname, lastname from employee where firstname like '_r%';
+select firstname, lastname from employee where firstname like '%a%a%';
+update employee set job_id = 12 where emp_id = 1122;
+delete from employee where emp_id = 1128;
+update employee set salary = 50000 where emp_id = 1122;
+
+
+
+
+--------------- EXPT 5 ---------------
+create table sailor(Sid number(10) primary key, Sname varchar(10), Rating number(10), Age float(4));
+insert into sailor values(22, 'Dustin', 7, 45.0);
+insert into sailor values(85, 'Art', 3, 25.5);
+insert into sailor values(74, 'Horatia', 9, 35.0);
+insert into sailor values(29, 'Brutus', 1, 33.0);
+insert into sailor values(31, 'Lubber', 8, 55.5);
+insert into sailor values(64, 'Horatio', 7, 35.0);
+insert into sailor values(71, 'Zorba', 10, 16.0);
+insert into sailor values(58, 'Rusty', 10, 35.0);
+insert into sailor values(32, 'Andy', 8, 25.5);
+insert into sailor values(95, 'Bob', 3, 63.5);
+create table boat(Bid number(10) primary key, Bname varchar(20), Colour varchar(10));
+insert into boat values(101, 'Interlake', 'Blue');
+insert into boat values(102, 'Interlake', 'Red');
+insert into boat values(103, 'Clipper', 'Green');
+insert into boat values(104, 'Marine', 'Red');
+create table reserve(Sid number(10), Bid number(10), Day varchar(10), foreign key(Sid) references sailor(Sid), foreign key(Bid) references boat(Bid));
+insert into reserve values(22,101,'10/10/98');
+insert into reserve values(22,102,'10/10/98');
+insert into reserve values(22,103,'10/08/98');
+insert into reserve values(22,104,'10/07/98');
+insert into reserve values(31,102,'11/10/98');
+insert into reserve values(31,103,'11/06/98');
+insert into reserve values(31,104,'11/12/98');
+insert into reserve values(64,101,'09/05/98');
+insert into reserve values(64,102,'09/08/98');
+insert into reserve values(74,103,'09/08/98');
+select * from boat;
+select * from sailor;
+select * from reserve;
+select distinct age from sailor;
+select distinct sname from sailor;
+select *from sailor where rating > 7;
+select s.sname, r.bid from sailor s, reserve r where s.sid = r.sid and r.bid = 103;
+select distinct s.sid from sailor s, reserve r, boat b where s.sid = r.sid and b.bid = r.bid and b.colour = 'Red';
+select distinct s.sname from sailor s, reserve r, boat b where s.sid = r.sid and b.bid = r.bid and b.colour = 'Red';
+select colour from sailor s, reserve r, boat b where s.sid = r.sid and b.bid = r.bid and sname = 'Lubber';
+select distinct sname from sailor s, reserve r where s.sid = r.sid;
+select distinct s.sname from sailor s, reserve r, boat b where s.sid = r.sid and b.bid = r.bid and b.colour in ('Red', 'Green');
+select sid from sailor where rating = 10 or sid = all(select sid from reserve where bid = 104);
+
+
+
+
+--------------- EXPT 6 ---------------
+CREATE TABLE company(c_id INT,c_name VARCHAR(100),c_address VARCHAR(100),PRIMARY KEY(c_id));  
+CREATE TABLE products(product_id INT,product_detail VARCHAR(100),c_id INT,PRIMARY KEY(product_id));  
+INSERT INTO company VALUES(1, 'S R Solutions', 'Pune')  
+INSERT INTO company VALUES(2, 'S D Foundations', 'Noida')  
+INSERT INTO company VALUES(3, 'S K Solutions', 'Delhi')  
+INSERT INTO company VALUES(4, 'U P Ltd', 'Kolkata')  
+INSERT INTO products VALUES(111, 'Monitor', 1);  
+INSERT INTO products VALUES(112, 'Processor', 2);  
+INSERT INTO products VALUES(113, 'Keyboard', 3);  
+INSERT INTO products VALUES(114, 'Mouse', 4);  
+INSERT INTO products VALUES(115, 'CPU', 5);  
+select * from company;
+select * from products;
+select * from company INNER JOIN products On company.c_id = products.c_id;
+select * from company left outer join products On company.c_id = products.c_id;
+select * from company RIGHT outer join products On company.c_id = products.c_id;
+select * from company full outer join products On company.c_id = products.c_id;    
+select * from company natural join products;
+SELECT * FROM departments WHERE EXISTS (SELECT * FROM employees WHERE departments.department_id = employees.department_id AND employees.salary >= 3500);
+select * from company cross join products;
+
+
+-- expt-7 --
+
+create table Emp(emp_no number primary key,name varchar(30) ,skill varchar(300),pay_rate number);
+create table Position(posting_no number primary key, skill varchar(300));
+create table Duty_alloc(posting_no number,emp_no number,day date,shift varchar(30));
+alter table Duty_alloc add  FOREIGN KEY (posting_no) REFERENCES Position(posting_no);
+alter table Duty_alloc add  FOREIGN KEY (emp_no) REFERENCES Emp(emp_no);
+alter table emp add primary key(emp_no);
+alter table Duty_alloc modify day varchar(10);
+alter table Duty_alloc add primary key(day, shift);
+alter table Duty_alloc drop primary key;
+insert into Emp (emp_no,name ,skill,pay_rate) Values (1, 'Eric', 'Painter', 10000);
+insert into Emp (emp_no,name ,skill,pay_rate) Values (2, 'Jack', 'Chef', 4000);
+insert into Emp (emp_no,name ,skill,pay_rate) Values (3, 'Tom', 'Musician', 5000);
+insert into Emp (emp_no,name ,skill,pay_rate) Values (4, 'Gary', 'Engineer', 12000);
+insert into Emp (emp_no,name ,skill,pay_rate) Values (5, 'XYZ', 'Actor', 12000);
+
+select * from emp;
+select * from Position;
+select * from Duty_alloc;
+
+insert into Position (posting_no, skill) Values (3, 'Musician');
+insert into Position (posting_no, skill) Values (4, 'Engineer');
+insert into Position (posting_no, skill) Values (5, 'Actor');
+insert into Position (posting_no, skill) Values (1, 'Painter');
+insert into Position (posting_no, skill) Values (2, 'Chef');
+
+
+insert into Duty_alloc(posting_no ,emp_no ,day ,shift) Values (1, 1, '1/11/2020', 'Morning');
+insert into Duty_alloc(posting_no ,emp_no ,day ,shift) Values (2, 2, '2/11/2020', 'Night');
+insert into Duty_alloc(posting_no ,emp_no ,day ,shift) Values (3, 3, '3/11/2020', 'Morning');
+insert into Duty_alloc(posting_no ,emp_no ,day ,shift) Values (4, 4, '4/11/2020', 'Night');
+insert into Duty_alloc(posting_no ,emp_no ,day ,shift) Values (1, 1, '5/11/2020', 'Night');
+
+select * from Emp where pay_rate >= (select pay_rate from Emp where name = 'XYZ');
+
+select * from emp where pay_rate = (select min(pay_rate) from emp);
+
+select name from emp e, position p where e.skill = p.skill and p.skill = 'Chef';
+
+delete from Duty_alloc where posting_no = 5;
+
+select name from emp minus(select name from emp e, Duty_alloc d where e.emp_no = d.emp_no);
+
+select name from emp e, Duty_alloc d where e.emp_no = d.emp_no group by name having count(day)>=2;
+
+
+
+Q2. 
+create table Pieces(code number primary key, name varchar(30));
+create table Provider(code varchar(5) primary key, name varchar(30));
+create table Provides(piececode number, providercode varchar(5), price number, primary key(piececode, providercode), foreign key(piececode) references Pieces(code), foreign key(providercode) references provider(code));
+
+insert into Pieces(1, 'Spwool');
+insert into Pieces values(1, 'Spwool');
+insert into Pieces values(2, 'Sprockets');
+insert into Pieces values(3, 'Bolts');
+insert into Provider values('HAL', 'Hallen Traders');
+insert into Provider values('TNBC', 'Skellingtom Suppliers');
+insert into Provider values('RBT', 'Susan Calvin Corp');
+insert into Provides values(1, 'TNBC',10);
+insert into Provides values(2, 'HAL',12);
+insert into Provides values(3, 'RBT',14);
+
+select * from Provides;
+select * from Pieces;
+select * from Provider;
+
+
+select name from Provider , Provides where code = providercode and piececode = 1;
+
+select name from Pieces , Provides where code = piececode and providercode = 'HAL';
+
+insert into Provides values(2, 'TNBC',7);
+
+update table Provides set price = price + 2
+
+update Provides set price = price + 2
+
+
+update Provides set price = price - 2
+
+update Provides set price += 2
+
+update Provides set price = +2
+
+update Provides set price = 10 where piececode = 1
+
+update Provides set price = 14 where piececode = 3
+
+update Provides set price = 12 where piececode = 2 and providercode = 'HAL'
+
+update Provides set price = 7 where piececode = 2 and providercode = 'TNBC'
+
+update Provides set price = price + 2;
+
+delete from Provides where providercode = 'RBT' AND piececode = 3;
+
+
+Q3.
+
+Create table Employees(employee_name varchar(30) primary key, street varchar(10), city varchar(30));
+describe Employees;
+Create table Companies(company_name varchar(30) primary key, city varchar(30));
+describe Companies;
+Create table Managers(employee_name varchar(30) primary key, manager_name varchar(30));
+describe Managers;
+Create table Works(employee_name varchar(30) primary key, company_name varchar(30), Salary number, foreign key(company_name) references Companies(company_name));
+describe Works;
+INSERT INTO Managers VALUES ('Ken', 'Zen');
+INSERT INTO Managers VALUES ('Karl', 'Quin');
+INSERT INTO Managers VALUES ('Harry', 'Will');
+INSERT INTO Managers VALUES ('Leo', 'Ted');
+select * from Managers
+
+INSERT INTO Works VALUES ('Harry', 'TCS', 15000);
+INSERT INTO Works VALUES ('Ken', 'PCS', 10000);
+INSERT INTO Works VALUES ('Karl', 'QCS', 25000);
+INSERT INTO Works VALUES ('Leo', 'ACS', 12000);
+select * from Works;
+
+
+
+
+insert into Employees values('Ken', 'St 2', 'Margao');
+insert into Employees values('Karl', 'St 4', 'Panjim');
+insert into Employees values('Harry', 'St 1', 'Banglore');
+insert into Employees values('Leo', 'St 3', 'Delhi');
+select * from Employees
+
+
+insert into Companies values('TCS', 'Banglore');
+insert into Companies values('PCS', 'Delhi');
+insert into Companies values('QCS', 'Goa');
+insert into Companies values('ACS', 'karnataka');
+select * from Companies;
+
+Update Employees set city='Margao' where employee_name IN(select Employees.employee_name from Employees, Works where Employees.employee_name=Works.employee_name AND Works.salary>20000);
+
+select * from Employees;
+
+update Employees set city='Margao' where employee_name IN(select E.employee_name from Employees E, Works W where E.employee_name=W.employee_name AND W.salary>20000);
+
+delete from Works where employee_name in(select e.employee_name from Employees e, Works w where e.employee_name = w.employee_name and w.company_name = 'TCS')
+
+select * from Works;
+
+INSERT INTO Works VALUES ('Harry', 'TCS', 15000)
+
+Update Works set salary*1.1 where employee_name in (select e.employee_name from employees e, works w, Companies c where e.employee_name = w.employee_name and w.company_name ='TCS' and c.city='Banglore' )
+
+Update Works set salary=salary*1.1 where employee_name in (select e.employee_name from employees e, works w, Companies c where e.employee_name = w.employee_name and w.company_name ='TCS' and c.city='Banglore')
+
+select * from Works
+
+Select count(Employee_name) from Employee where City =’Delhi’
+
+Select count(Employee_name) from Employee where City ='Delhi'
+
+Select count(Employee_name) from Employees where City ='Delhi'
+
+Select count(Employee_name) NO_OF_Employee_in_Delhi from Employees where City ='Delhi'
+
+
+Q4. 
+
+create table Student(Name varchar(30), StudNo number, Class number, Major varchar(10), PRIMARY KEY(StudNo));
+
+describe Student;
+
+create table Course(Title varchar(20), CourseNo number, CreditHour number, Department varchar(10), PRIMARY KEY(CourseNo));
+
+describe Course;
+
+create table Section(SectionId number, CourseNo number, Semester number, Year number, Instructor varchar(20), PRIMARY KEY(SectionId), FOREIGN KEY(CourseNo) REFERENCES Course(CourseNo));
+
+describe Section;
+
+create table Grade_Report(StudNo number, SectionId number, Grade varchar(10), PRIMARY KEY(StudNo, SectionId), FOREIGN KEY(StudNo) REFERENCES Student(StudNo), FOREIGN KEY(SectionId) REFERENCES Section(SectionId));
+
+describe Grade_Report;
+
+create table Prerequisite(CourseNo number, PrerequisiteNo number, PRIMARY KEY(PrerequisiteNo), FOREIGN KEY(CourseNo) REFERENCES Course(CourseNo));
+
+describe Prerequisite;
+
+insert into Student values('Lenin', 3, 10, 'M.E');
+
+select * from Student order by StudNo;
+
+insert into Course values('DBMS', 10, 100, 'COMP');
+insert into Course values('Soft Comp', 20, 200, 'ETC');
+insert into Course values('Robotics', 30, 300, 'MECH');
+
+select * from Course;
+
+insert into Section values(1000, 10, 5, 2005, 'Alan');
+insert into Section values(2000, 20, 6, 2006, 'Gupta');
+insert into Section values(3000, 30, 7, 2001, 'Sinha');
+insert into Section values(4000, 30, 8, 2005, 'Sinha');
+insert into Section values(5000, 10, 2, 2005, 'Sinha');
+
+select * from Section;
+
+insert into Grade_Report values(1, 1000, 'A');
+insert into Grade_Report values(2, 2000, 'B');
+insert into Grade_Report values(3, 3000, 'C');
+
+select * from Grade_Report;
+
+insert into Prerequisite values(10, 10000);
+insert into Prerequisite values(20, 20000);
+insert into Prerequisite values(30, 30000);
+
+select * from Prerequisite;
+
+select Title from Course C, Section S where C.CourseNo = S.CourseNo and Instructor = 'Sinha' and S.Year IN (2001, 2005);
+
+select count(StudNo) as No_of_students, CourseNo, Semester, Year from Section S, Grade_Report GR where S.Instructor = 'Gupta' and S.SectionId = GR.SectionId group by S.CourseNo, S.Semester, S.Year;
+
+select Name, Major from Student S, Grade_Report GR where S.StudNo = GR.StudNo and Grade = 'A';
+
+select distinct Name, Major from Student s , Grade_Report g where s.StudNo=g.StudNo minus(select distinct Name, Major from Student s, Grade_Report g where s.StudNo=g.StudNo and Grade not in('A'));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
