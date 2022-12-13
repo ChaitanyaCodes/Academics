@@ -1,0 +1,143 @@
+alter session set nls_date_format = 'mm-dd-yyyy'
+
+select * from emp;
+select * from Position;
+select * from Duty_alloc;
+
+create table Emp(emp_no number primary key,name varchar(30) ,skill varchar(300),pay_rate number);
+create table Position(posting_no number primary key, skill varchar(300));
+create table Duty_alloc(posting_no number,emp_no number,day date,shift varchar(30));
+
+alter table Duty_alloc add  FOREIGN KEY (posting_no) REFERENCES Position(posting_no);
+alter table Duty_alloc add  FOREIGN KEY (emp_no) REFERENCES Emp(emp_no);
+
+insert into Emp (emp_no,name ,skill,pay_rate) Values (1, 'Eric', 'Painter', 10000);
+insert into Emp (emp_no,name ,skill,pay_rate) Values (2, 'Jack', 'Chef', 4000);
+insert into Emp (emp_no,name ,skill,pay_rate) Values (3, 'Tom', 'Musician', 5000);
+insert into Emp (emp_no,name ,skill,pay_rate) Values (4, 'Gary', 'Engineer', 12000);
+insert into Emp (emp_no,name ,skill,pay_rate) Values (5, 'XYZ', 'Actor', 12000);
+
+insert into Position (posting_no, skill) Values (3, 'Musician');
+insert into Position (posting_no, skill) Values (4, 'Engineer');
+insert into Position (posting_no, skill) Values (5, 'Actor');
+insert into Position (posting_no, skill) Values (1, 'Painter');
+insert into Position (posting_no, skill) Values (2, 'Chef');
+
+insert into Duty_alloc(posting_no ,emp_no ,day ,shift) Values (1, 1, '1/11/2020', 'Morning');
+insert into Duty_alloc(posting_no ,emp_no ,day ,shift) Values (2, 2, '2/11/2020', 'Night');
+insert into Duty_alloc(posting_no ,emp_no ,day ,shift) Values (3, 3, '3/11/2020', 'Morning');
+insert into Duty_alloc(posting_no ,emp_no ,day ,shift) Values (4, 4, '4/11/2020', 'Night');
+insert into Duty_alloc(posting_no ,emp_no ,day ,shift) Values (1, 1, '5/11/2020', 'Night');
+
+select * from Emp where pay_rate >= (select pay_rate from Emp where name = 'XYZ');
+
+select * from emp where pay_rate = (select min(pay_rate) from emp);
+
+select name from emp e, position p where e.skill = p.skill and p.skill = 'Chef';
+
+delete from Duty_alloc where posting_no = 5;
+
+select name from emp minus(select name from emp e, Duty_alloc d where e.emp_no = d.emp_no);
+
+select name from emp e, Duty_alloc d.where e.emp_no = d.emp_no group by name having count(day)>=2;
+
+
+Q2.
+
+create table Pieces(code number primary key, name varchar(30));
+create table Provider(code varchar(5) primary key, name varchar(30));
+create table Provides(piececode number, providercode varchar(5), price number, primary key(piececode, providercode), foreign key(piececode) references Pieces(code), foreign key(providercode) references provider(code));
+
+select * from Provides;
+select * from Pieces;
+select * from Provider;
+
+insert into Pieces(1, 'Spwool');
+insert into Pieces values(2, 'Sprockets');
+insert into Pieces values(3, 'Bolts');
+
+insert into Provider values('HAL', 'Hallen Traders');
+insert into Provider values('TNBC', 'Skellingtom Suppliers');
+insert into Provider values('RBT', 'Susan Calvin Corp');
+
+insert into Provides values(1, 'TNBC',10);
+insert into Provides values(2, 'HAL',12);
+insert into Provides values(3, 'RBT',14);
+
+select name from Provider , Provides where code = providercode and piececode = 1;
+select name from Pieces , Provides where code = piececode and providercode = 'HAL';
+insert into Provides values(2, 'TNBC',7);
+update Provides set price = price + 2;
+delete from Provides where providercode = 'RBT' AND piececode = 3;
+
+q3
+
+select * from Managers;
+select * from Works;
+select * from Employees;
+select * from Companies;
+
+Create table Employees(employee_name varchar(30) primary key, street varchar(10), city varchar(30));
+Create table Companies(company_name varchar(30) primary key, city varchar(30));
+Create table Managers(employee_name varchar(30) primary key, manager_name varchar(30));
+Create table Works(employee_name varchar(30) primary key, company_name varchar(30), Salary number, foreign key(company_name) references Companies(company_name));
+
+
+insert into Employees values('Ken', 'St 2', 'Margao');
+insert into Employees values('Karl', 'St 4', 'Panjim');
+insert into Employees values('Harry', 'St 1', 'Banglore');
+insert into Employees values('Leo', 'St 3', 'Delhi');
+
+insert into Companies values('TCS', 'Banglore');
+insert into Companies values('PCS', 'Delhi');
+insert into Companies values('QCS', 'Goa');
+insert into Companies values('ACS', 'karnataka');
+
+INSERT INTO Managers VALUES ('Ken', 'Zen');
+INSERT INTO Managers VALUES ('Karl', 'Quin');
+INSERT INTO Managers VALUES ('Harry', 'Will');
+INSERT INTO Managers VALUES ('Leo', 'Ted');
+
+INSERT INTO Works VALUES ('Harry', 'TCS', 15000);
+INSERT INTO Works VALUES ('Ken', 'PCS', 10000);
+INSERT INTO Works VALUES ('Karl', 'QCS', 25000);
+INSERT INTO Works VALUES ('Leo', 'ACS', 12000);
+
+Update Employees set city='Margao' where employee_name IN(select Employees.employee_name from Employees, Works where Employees.employee_name=Works.employee_name AND Works.salary>20000);
+Update Works set salary=salary*1.1 where employee_name in (select e.employee_name from employees e, works w, Companies c where e.employee_name = w.employee_name and w.company_name ='TCS' and c.city='Banglore');
+delete from Works where employee_name in(select e.employee_name from Employees e, Works w where e.employee_name = w.employee_name and w.company_name = 'TCS');
+Select count(Employee_name) NO_OF_Employee_in_Delhi from Employees where City ='Delhi';
+
+Q4
+
+create table Student(Name varchar(30), StudNo number, Class number, Major varchar(10), PRIMARY KEY(StudNo));
+create table Course(Title varchar(20), CourseNo number, CreditHour number, Department varchar(10), PRIMARY KEY(CourseNo));
+create table Section(SectionId number, CourseNo number, Semester number, Year number, Instructor varchar(20), PRIMARY KEY(SectionId), FOREIGN KEY(CourseNo) REFERENCES Course(CourseNo));
+create table Grade_Report(StudNo number, SectionId number, Grade varchar(10), PRIMARY KEY(StudNo, SectionId), FOREIGN KEY(StudNo) REFERENCES Student(StudNo), FOREIGN KEY(SectionId) REFERENCES Section(SectionId));
+create table Prerequisite(CourseNo number, PrerequisiteNo number, PRIMARY KEY(PrerequisiteNo), FOREIGN KEY(CourseNo) REFERENCES Course(CourseNo));
+
+insert into Student values('Ari', 1, 8, 'C.E');
+insert into Student values('Eric', 2, 9, 'E.E');
+insert into Student values('Lenin', 3, 10, 'M.E');
+
+insert into Course values('DBMS', 10, 100, 'COMP');
+insert into Course values('Soft Comp', 20, 200, 'ETC');
+insert into Course values('Robotics', 30, 300, 'MECH');
+
+insert into Section values(1000, 10, 5, 2005, 'Alan');
+insert into Section values(2000, 20, 6, 2006, 'Gupta');
+insert into Section values(3000, 30, 7, 2001, 'Sinha');
+insert into Section values(4000, 30, 8, 2005, 'Sinha');
+insert into Section values(5000, 10, 2, 2005, 'Sinha');
+
+insert into Grade_Report values(1, 1000, 'A');
+insert into Grade_Report values(2, 2000, 'B');
+insert into Grade_Report values(3, 3000, 'C');
+
+insert into Prerequisite values(10, 10000);
+insert into Prerequisite values(20, 20000);
+insert into Prerequisite values(30, 30000);
+
+select Title from Course C, Section S where C.CourseNo = S.CourseNo and Instructor = 'Sinha' and S.Year IN (2001, 2005);
+select count(StudNo) as No_of_students, CourseNo, Semester, Year from Section S, Grade_Report GR where S.Instructor = 'Gupta' and S.SectionId = GR.SectionId group by S.CourseNo, S.Semester, S.Year;
+select distinct Name, Major from Student s , Grade_Report g where s.StudNo=g.StudNo minus(select distinct Name, Major from Student s, Grade_Report g where s.StudNo=g.StudNo and Grade not in('A'));
