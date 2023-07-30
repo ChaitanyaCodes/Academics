@@ -1,29 +1,76 @@
 body {
     font-family: Helvetica, Arial, sans-serif;
+    font-size: 1.05rem;
 }
 
 .yellow{
-    border: 1px solid yellow;
+    border: 1px solid #294545;
 }
 
 .title-container {
     display: flex;
+    background-color: #0000ff;
 }
 
 .name {
-    color: rgb(255, 166, 0);
-    font-weight: 700;
+    color: #0b1f2b;
+    font-weight: 800;
 margin: 1rem 0  .3rem;
 }
 .role{
-    color:rgb(255, 136, 0);
+    color: #061e2c;
     margin: .2rem 0;
     font-style: italic;
+    font-weight: 400;
+}
+
+.etc {
+    margin-top: 2rem;
+    color: white;
+    font-style: italic;
+    font-weight: bold;
 }
 
 .profile-img{
     max-width: 8rem;
     margin: 1rem 1.5rem;
+    border-radius: 20px;
+}
 
+.detail{
+    margin: .5rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.head {
+    color: rgb(67, 170, 170);
+    margin-left: 2rem;
+    width: 5rem;
+    font-weight: 700;
+}
+
+.list {
+    list-style-type: none;
+}
+
+.list li {
+    padding: .1rem;
+}
+
+.skill {
+    color: white;
+    font-weight: bolder;
+    padding: .4rem;
+    border-radius: 5px;
+    margin-right: .5rem;
+    background-color: blue;
+}
+
+.project-title {
+    color:rgb(37, 120, 141);
 }
 
